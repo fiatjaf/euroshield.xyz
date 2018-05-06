@@ -225,6 +225,9 @@ reload()
   font-family: monospace;
   font-size: 1.4em;
   z-index: 9999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #euroshield-modal * {
   box-sizing: border-box;
@@ -232,14 +235,11 @@ reload()
 #euroshield-modal > div {
   width: 600px;
   height: 400px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  margin-top: -220px;
-  margin-left: -330px;
   background: #162274;
   background-image: url('https://`+settings.Host+`/eu-flag.jpg');
   background-size: cover;
+  max-width: 100%;
+  max-height: 100%;
 }
 #euroshield-modal > div > div {
   background: rgba(0, 0, 0, 0.7);
