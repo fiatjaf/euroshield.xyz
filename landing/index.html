@@ -1,0 +1,60 @@
+<!doctype html>
+
+<meta charset=utf-8>
+<title>euroshield</title>
+<style>
+* {
+  box-sizing: border-box;
+  font-family: monospace;
+}
+body {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 10px;
+  font-size: 1.2em;
+}
+code {
+  padding: 2px 8px;
+  background: #f4f4f4;
+  display: inline-block;
+}
+</style>
+
+<h1>Protect your website from GDPR <small>(beta)</small></h1>
+
+<p>Install our JS snippet and block access to your website to any EU-area visitor.</p>
+
+<p>Just place this at the end of your HTML:</p>
+<code>
+&lt;script src="https://euroshield.xyz/shield.js"&gt;&lt;/script&gt;
+</code>
+
+<h3>Options</h3>
+<ul>
+  <li>Append <code>?ask=y</code> to the script URL to prompt everybody, not only IPs that come from countries on the European Union.</li>
+  <li>Use <code>?ask=n</code> to block any IP that comes from these countries without asking.</li>
+</ul>
+
+<h3>Demo</h3>
+<p>See how it works by visiting <a href="https://alhur.es/" target="_blank">https://alhur.es/</a> (you should be prompted to answer if you are an EU citizen).</p>
+
+<p>Nothing is stored on the server, <code>localStorage</code> is used to store the answers from the visitors.</p>
+
+<hr>
+
+<h2>Coming soon:</h2>
+
+<ul>
+  <li>Geo IP or question-protected redirect proxies</li>
+  <li>Customizable modals, prompts and messages</li>
+  <li>Geo IP Or question-protected full website proxy</li>
+</ul>
+
+<p>Talk to us. We're open to suggestions and criticism! Use the box on the right:</p>
+
+<script>
+var __REPLAIN_ = '618062c5-3eaf-458a-936b-87e9411c0771';
+(function(u){var s=document.createElement('script');s.type='text/javascript';s.async=true;s.src=u;
+var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);
+})('https://widget.replain.cc/dist/client.js');
+</script>
