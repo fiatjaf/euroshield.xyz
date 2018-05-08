@@ -36,9 +36,21 @@ code {
 </ul>
 
 <h3>Demo</h3>
-<p>See how it works by visiting <a href="https://alhur.es/" target="_blank">https://alhur.es/</a> (you should be prompted to answer if you are an EU citizen even if you're not in the EU for demo purposes).</p>
+<p>See how it works by visiting <a href="https://alhur.es/" target="_blank">https://alhur.es/</a> (you should be prompted to answer if you are an EU residents even if you're not in the EU for demo purposes).</p>
 
 <p>Nothing is stored on the server, <code>localStorage</code> is used to store the answers from the visitors.</p>
+
+<hr>
+
+<h2>How is a JavaScript widget going to prevent EU residents from using my website?</h2>
+
+<p>Well, if the user is a begginer-level hacker it will easily be able to bypass the block. If you're not using the <code>?ask=n</code> parameter, the user may also easily lie that he's not aneuropean and get access to the site. But, for as much as this isn't valid legal advice and you shouldn't take our words for it, the topic 122 of <a href="http://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679&from=EN">the General Data Protection Regulation</a> itself states that the law</p>
+
+<blockquote>
+should cover in particular the processing in the context of the activities of an establishment of the controller or processor on the territory of its own Member State, the processing of personal data carried out by public authorities or private bodies acting in the public interest, processing affecting data subjects on its territory or processing carried out by a controller or processor <b>not established in the Union when targeting data subjects residing on its territory</b>.
+</blockquote>
+
+<p>So if you're explicitly blocking EU residents, even if they can get around that using their own cleverness (or lies), it should be clear that you're not <b>targeting them</b>.</p>
 
 <hr>
 

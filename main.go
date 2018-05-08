@@ -138,7 +138,7 @@ func handle(w http.ResponseWriter, r *http.Request) {
 			serveJS := func(forceask, forceblock string) {
 				askHTML := strings.Replace(`
 <div>
-  <p>Are you a citizen of the European Union?</p>
+  <p>Are you a resident of the European Union?</p>
   <div class="buttons">
     <button onclick="yes(); return false">Yes</button>
     <button onclick="no(); return false">No</button>
@@ -150,7 +150,7 @@ func handle(w http.ResponseWriter, r *http.Request) {
 <div>
 <p>Dear visitor,</p>
 <p>We are very sad to announce that our service is incompatible with the <a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation">GDPR</a> requirements.</p>
-<p>Because of that we prefer to not serve what would be a potentially illegal product to all citizens from any European Union country.</p>
+<p>Because of that we prefer to not serve what would be a potentially illegal product to all residents of any European Union country.</p>
 <p>Since you are one of those, you are blocked from viewing this website.</p>
 <p>We are very sorry.</p>
 </div>
