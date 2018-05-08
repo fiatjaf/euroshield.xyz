@@ -19,7 +19,8 @@ type Settings struct {
 }
 
 var err error
-var log = zerolog.New(os.Stderr).Output(zerolog.ConsoleWriter{Out: os.Stderr})
+var log = zerolog.New(os.Stderr).Output(zerolog.ConsoleWriter{Out: os.Stderr}).
+	With().Timestamp().Logger()
 var settings Settings
 var router *mux.Router
 
@@ -53,13 +54,6 @@ func main() {
 }
 
 func handle(w http.ResponseWriter, r *http.Request) {
-	log.Debug().
-		Str("country", r.Header.Get("Cf-Ipcountry")).
-		Str("host", r.Host).
-		Str("url", r.URL.String()).
-		Str("referrer", r.Header.Get("Referer")).
-		Msg("got visit")
-
 	_, euroIP := countries[r.Header.Get("Cf-Ipcountry")]
 	var whitelisted bool
 	var selfdeclared bool
@@ -134,6 +128,8 @@ func handle(w http.ResponseWriter, r *http.Request) {
 			handleAsk(r.URL.Query().Get("ask"))
 
 			log.Debug().
+				Str("country", r.Header.Get("Cf-Ipcountry")).
+				Str("referrer", r.Header.Get("Referer")).
 				Bool("block", block).Bool("ask", ask).
 				Msg("js snippet")
 
@@ -256,6 +252,13 @@ reload()
 			http.ServeFile(w, r, "eu-flag.jpg")
 		default:
 			// visitor wants to browse us
+			log.Debug().
+				Str("country", r.Header.Get("Cf-Ipcountry")).
+				Str("host", r.Host).
+				Str("url", r.URL.String()).
+				Str("referrer", r.Header.Get("Referer")).
+				Msg("got visit")
+
 			http.ServeFile(w, r, "landing/index.html")
 		}
 	} else {
