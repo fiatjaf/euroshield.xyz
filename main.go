@@ -137,7 +137,7 @@ func handle(w http.ResponseWriter, r *http.Request) {
 
 			serveJS := func(forceask, forceblock string) {
 				askHTML := strings.Replace(`
-<div>
+<div class="question">
   <p>Are you a resident of the European Union?</p>
   <div class="buttons">
     <button onclick="yes(); return false">Yes</button>
@@ -161,7 +161,7 @@ var link = document.createElement('link')
 link.href = 'https://%s/modal.css'
 link.rel = 'stylesheet'
 var modal = document.createElement('div')
-modal.id = 'euroshield-modal'
+modal.id = 'euroshield'
 document.head.appendChild(link)
 document.body.appendChild(modal)
 
@@ -208,48 +208,10 @@ reload()
 				fmt.Fprint(w, "")
 			}
 		case "/modal.css":
-			// CSS for the modal
 			w.Header().Set("Content-Type", "text/css")
-			fmt.Fprint(w, `
-#euroshield-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(240, 240, 240, 0.8);
-  font-family: monospace;
-  font-size: 1.4em;
-  z-index: 9999999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#euroshield-modal * {
-  box-sizing: border-box;
-}
-#euroshield-modal > div {
-  width: 600px;
-  height: 400px;
-  background: #162274;
-  background-image: url('https://`+settings.Host+`/eu-flag.jpg');
-  background-size: cover;
-  max-width: 100%;
-  max-height: 100%;
-}
-#euroshield-modal > div > div {
-  background: rgba(0, 0, 0, 0.7);
-  color: #f4f4f4;
-  width: 100%;
-  height: 100%;
-  padding: 5%;
-}
-#euroshield button {
-  cursor: pointer;
-}
-                `)
+			http.ServeFile(w, r, "assets/modal.css")
 		case "/eu-flag.jpg":
-			http.ServeFile(w, r, "eu-flag.jpg")
+			http.ServeFile(w, r, "assets/eu-flag.jpg")
 		default:
 			// visitor wants to browse us
 			log.Debug().
