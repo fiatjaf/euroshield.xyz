@@ -214,23 +214,11 @@ reload()
 			http.ServeFile(w, r, "assets/eu-flag.jpg")
 		default:
 			// visitor wants to browse us
-			log.Debug().
-				Str("country", r.Header.Get("Cf-Ipcountry")).
-				Str("host", r.Host).
-				Str("url", r.URL.String()).
-				Str("referrer", r.Header.Get("Referer")).
-				Msg("got visit")
-
 			http.ServeFile(w, r, "landing/index.html")
 		}
 	} else {
 		// it's a proxy or redirect request
 		handleTXT()
-
-		log.Debug().
-			Bool("block", block).Bool("ask", ask).
-			Bool("proxy", proxy).Bool("redir", redirect).Str("target", target).
-			Msg("proxy or redirect")
 
 		if block {
 			performBlock(w, r)
